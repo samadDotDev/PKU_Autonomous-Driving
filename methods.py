@@ -90,7 +90,7 @@ def format_inputs_appended_with_image(ImageIdSubId,extra_inputs,detector_name='t
     ImageIdSubIdList = ImageIdSubId.split("-")
     ImageId = ImageIdSubIdList[0]
     SubId = ImageIdSubIdList[1]
-    imagePath = os.path.join(DATASET_DIR , "detections/"+detector_name+"/"+ImageId+".jpg-objects/car-"+SubId+".jpg")
+    imagePath = os.path.join(DETECTIONS_DIR, detector_name+"/"+ImageId+".jpg-objects/car-"+SubId+".jpg")
     
     inputs_extra = np.array(extra_inputs, dtype="float32").reshape(4,-1)    
     min_max_scaler = preprocessing.MinMaxScaler()
@@ -206,6 +206,22 @@ def return_img(imageId,datasetType='train'):
     if mask is None:
         return img    
     return hide_masked_area(img, mask)
+
+def open_image_preprocessed(img_path,hide_own_bonnet=True,mask_path=None):
+        
+    img = cv2.imread(img_path,)
+    img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+    
+    if hide_own_bonnet:
+        # Yolo can be affected by part of car on which camera is installed
+        poly_to_hide_car = np.array([[1100,2400],[3000,2480], [3384,2640],[3384,2710], [800,2710]])
+        img = cv2.fillConvexPoly(img, poly_to_hide_car, [0,0,0])
+    
+    if mask_path is not None:
+        mask = cv2.imread(mask_path)
+        if mask is not None:
+            return hide_masked_area(img, mask)   
+    return img
 
 def open_image(imagePath,square_size=(48,48)):
     img = cv2.imread(imagePath,)
