@@ -1,0 +1,7 @@
+% In your thesis document, you should have a good abstract that can
+% answer the following questions: (1) What is the problem you worked
+% on, (2) Why is it interesting or motivation for working on this
+% problem, (3) How did you achieve the solution or What did you do?,
+% and (4) How well did your idea work out?
+
+This paper presents an approach that has been tested to find rotational (yaw, pitch, roll) and translational angles (x, y, z) from collection of single images; frames of video recorded from camera mounted on a vehicle during drive through urban environment. Using deep learning application in two distinct stages, a pretrained YOLOv3 network is applied to find and extract cars present in the picture and then extracted images alongwith their coordinates in original image are fed into Convolutional Neural Network to learn and later predict angles in different settings. During sensitivity analysis, the algorithm achieves 57.3\% CSI (Critical Success Index) \parencite{schaefer1990criticalSuccessIndex} during extraction stage, results yet need to be combined for MAP (Mean Absolute Precision).

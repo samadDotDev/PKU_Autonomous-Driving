@@ -1,0 +1,126 @@
+% M.S. Computer Science Thesis
+\documentclass{umdthesis}
+
+% This package will nag about old-style LaTeX use.  Feel free to
+% uncomment if you care about such issues.  \usepackage[l2tabu,
+% orthodox]{nag}
+
+% Note as of 11/18/14
+% At the time of this update, the website:
+% http://www.olivierverdier.com/posts/2013/07/15/modern-latex/ had
+% useful information for Modern LaTeX... some of it is included here.
+
+% Uses new biblatex system rather than traditional bibtex
+% This uses the Author-Year style for both citations and references
+\usepackage[style=authoryear, citestyle=authoryear, backref=true, isbn=true, url=true, backend=biber]{biblatex}
+
+% There doesn't seem to much different if you use the apa style in the same way
+% \usepackage[style=apa, citestyle=apa, backref=true, isbn=true, url=true, backend=biber]{biblatex}
+
+% allows the Table of Contents to include the figure listings.
+\usepackage{tocbibind}
+% changes the name from Bibliography to References which is more appropriate for CS
+\DefineBibliographyStrings{english}{%
+  bibliography = {References},
+}
+
+% Your references are placed into the .bib file and then specified here:
+\addbibresource{UMDCS_MSThesis.bib}
+
+% \usepackage{fontspec}
+% \setmainfont{TimesNewRomanPSMT}
+% \setmathfont{CambriaMath}
+% \setmainfont{Times}
+% \setsansfont{Helvetica}
+
+% This will highlight code examples with nice coloring if you have that in your thesis.
+% 
+% This example uses C++, but there are many nice examples for other languages too.
+%
+% Nice C++ listings example derived from http://timmurphy.org/2014/01/27/displaying-code-in-latex-documents/
+\definecolor{listinggray}{gray}{0.9}
+\definecolor{lbcolor}{rgb}{0.95,0.95,0.95}
+
+\lstset{
+  backgroundcolor=\color{lbcolor},
+  language=C++, % if you need to change the language...
+  frame=lines, % draw a frame at the top and bottom of the code block
+  tabsize=3, % tab space width
+  captionpos=b,
+  basicstyle=\footnotesize,
+  breaklines=true,
+  showstringspaces=false, % don't mark spaces in strings
+  numbers=left, % display line numbers on the left
+%  commentstyle=\color{green}, % comment color
+  keywordstyle=\color{blue}, % keyword color
+  stringstyle=\color{red} % string color
+}
+
+\RequirePackage{amsmath}
+\RequirePackage{amssymb} 
+
+% Supplied by Matt Overby - Spring 2014 - This is a nice command that
+% lets you mark sections you will come back to later.
+\newcommand{\TODO}[1]{\colorbox{yellow}{\textbf{TODO}: #1}}
+
+\title{Predicting vehicles' position and angles from single image of road using deep learning}
+\author{Abdul Samad}
+
+%\advisor{Dr. Richard Maclin}  
+
+%\copyrightyear{\number\the\year} 
+
+%\ackfile{acknowledge} 
+%\dedication{dedication}
+\abstractfile{abstract}
+
+\begin{document} 
+ 
+	 \frontmatter 
+ 
+        % You could save some space when initially printing (if you
+	% really need to) by uncommenting this line to single
+	% space
+        %
+        % \singlespace
+        
+        
+      
+        % Ideally the Introduction to your thesis 
+	\include{chap_intro} 
+	 
+        % Any background necessary to understand your thesis.  This 
+        % can also contain the related work too. 
+	\include{chap_background} 
+ 
+        % Of course, if you wanted a separate chapter for Related
+        % Work, you could make one too. 
+    \include{chap_relatedwork}     
+
+        % The major content for your thesis!  What did you do and how   
+        % did you do it!
+	\include{chap_implementation}  
+
+        % It's always good to have a results chapter so you can 
+        % present how well your ideas and implementations worked
+	\include{chap_results}
+
+        % Time to wrap up the thesis with a discussion of your ideas
+        % and knowledge that you generated, along with any important
+        % insights, or things you learned.  You can include ideas for
+        % future extensions and effort here too.
+	\include{chap_conclusion}
+	
+        % If you need an appendix (or appendices), they can be added here 
+%	\include{appendix}	 
+	
+        % And finally, don't forget the references and bibliography.
+        % You can add entries to the file UMDCS_Thesis.bib for your
+        % references.  You then need to ``cite'' them in the tex files
+        % by using the ~\cite{ReferenceID} tags.
+        %
+        % and make sure to include the bib in the TOC
+	\newpage
+        \printbibliography[heading=bibintoc]
+	
+\end{document}

@@ -1,0 +1,8 @@
+\chapter{Conclusions and Future Work}
+\label{chap:conclusions}
+
+The results need to be combined in a unified metric such as MAP (Mean Average Precision). During training, The predicted angles information can be evaluated against ground truth angles within certain thresholds sorted according to percentage probability feature, to be considered TP (True Positives) and other predictions being FP (False Positives). Precision calculation will then show combined result of two stages and hence degree of relevance of solution to the actual goal.
+
+Second stage also requires many hyper-parameters optimization, such as changing number of hidden layers, number of units in each layer, loss function, activation functions, batch-sizes, longer number of epochs with early stopping etc. 
+
+There is also a possibility of reusing other pre-trained networks for each of the stage.
